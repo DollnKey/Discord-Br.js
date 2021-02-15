@@ -1,7 +1,7 @@
 <div align="center">
    <br />
    <p style="font-size=20px">
-      Discord-Br.js
+   <h1>Discord-Br.js</h1>
    </p>
 </div>
 
@@ -12,6 +12,6 @@ Um wrapper feito 100% em javascript puro e por brasileiros, utilizando somente a
 <div align="center">
    <br />
    <p style="font-size=10px">
-      Ainda em desenvolvimento!
+   <h3>Ainda em desenvolvimento!</h3>
    </p>
 </div>
