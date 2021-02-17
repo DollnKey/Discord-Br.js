@@ -1,19 +1,20 @@
 const Client = require("../Client/Client")
-const ClientUser = require("../Client/ClientUser")
+const {ClientUser} = require("../Utils/Constants")
 
 module.exports = (client = Client, payload = {}) =>{
 
    const d = payload.d
-   client.user = new ClientUser(
-     d.user.username,
-     d.user.discriminator,
-     d.user.verified,
-     d.user.id,
-     d.user.flags,
-     d.user.email,
-     d.user.bot,
-     d.user.avatar
-   )
 
-   console.log(client)
+   client.user = {
+     nome: d.user.username,
+     hashtag: d.user.discriminator,
+     verificado: d.user.verified,
+     id: d.user.id,
+     flags: d.user.flags,
+     email: d.user.email,
+     bot: d.user.bot,
+     avatar: d.user.avatar
+   }
+
+   client.emit("ready")
 }

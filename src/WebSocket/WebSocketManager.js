@@ -8,7 +8,7 @@ module.exports = class Websocket {
         this.url = "wss://gateway.discord.gg/?v=8&encoding=json"
         this.ws;
         this.interval;
-        this.client = Client
+        this.client = client
     }
 
     async connect(token = "") {
@@ -44,8 +44,14 @@ module.exports = class Websocket {
                         this.interval = this.heartbeat(heartbeat_interval)
                         break;
                     case 0:
+                        try{
                          const module = require(`../handlers/${event}.js`)
+                         if(module){
                          module(this.client, payload)
+                         }
+                        }catch(e){
+                            console.log(e)
+                        }
                         break;
                 }
             } catch (e) {

@@ -1,16 +1,27 @@
 {
-  "name": "discord-br",
-  "version": "1.0.0",
+  "name": "discord-br.js",
+  "version": "1.0.5",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Bryzzen",
   "license": "ISC",
   "dependencies": {
-    "deno": "^0.0.6",
     "ws": "^7.4.3"
+  },
+  "typings": "./index.d.ts",
+  "exports": {
+    ".": [
+      {
+        "require": "./index.js",
+        "import": "./esm.mjs"
+      },
+      "./index.js"
+    ],
+    "./": "./",
+    "./esm": "./esm.mjs"
   }
 }
