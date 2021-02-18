@@ -1,8 +1,8 @@
-export default class Guild {
+module.exports = class Guild {
     _client;
-    entrou: number;
-    quantidadeMembros: number;
-    id: string;
+    entrou;
+    quantidadeMembros;
+    id;
 
     constructor(data, client){
         this._client = client;

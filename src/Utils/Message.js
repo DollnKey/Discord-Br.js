@@ -1,21 +1,4 @@
-interface autor {
-   nome: string;
-   id: string;
-   hashtag: string;
-   avatar: string;
-}
-
-export default class Message {
-    _client;
-    tipo: string;
-    criado: number;
-    conteudo: string;
-    servidorID: string;
-    canalID: string;
-    id: string;
-
-    autor: autor
-
+module.exports = class Message {
     constructor(data, client){
         this._client = client;
         this.tipo = data.type || 0

@@ -1,18 +1,7 @@
-import WebSocket from "ws"
+const WS = require("ws");
 
-interface Client {
-   token: string;
-}
-
-export class Websocket {
-
-    token: string;
-    url: string;
-    ws;
-    interval;
-    client: Client
-    
-    constructor(client: Client) {
+module.exports = class Websocket {
+    constructor(client) {
         this.token;
         this.url = "wss://gateway.discord.gg/?v=8&encoding=json"
         this.ws;
@@ -20,14 +9,13 @@ export class Websocket {
         this.client = client;
     }
 
-
-    async connect(token: string){
+    async connect(token) {
         this.token = token;
 
-        this.ws = new WebSocket(this.url)
+        this.ws = new WS(this.url);
 
         this.ws.on("open", async () => {
-            await this.ws.send(JSON.stringify({
+            this.ws.send(JSON.stringify({
                 op: 2,
                 d: {
                     token: this.token,
@@ -52,12 +40,12 @@ export class Websocket {
                         this.interval = this.heartbeat(heartbeat_interval)
                         break;
                     case 0:
-                        try{
-                         const {default: module} = await import(`../handlers/${event}.ts`)
-                         if(module){
-                         module(this.client, payload)
-                         }
-                        }catch(e){
+                        try {
+                            const module = require(`../handlers/${event}.js`)
+                            if (module) {
+                                module(this.client, payload)
+                            }
+                        } catch (e) {
                             console.log(e)
                         }
                         break;
@@ -67,6 +55,7 @@ export class Websocket {
             }
         })
     }
+
     heartbeat(ms = 1) {
         return setInterval(() => {
             this.ws.send(JSON.stringify({
@@ -89,7 +78,7 @@ export class Websocket {
                 }
             }
         }
-        await this.ws.send(JSON.stringify(identify))
+        this.ws.send(JSON.stringify(identify))
         return;
     }
 }
