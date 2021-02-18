@@ -1,3 +1,5 @@
+const Guild = require("../Utils/Guild")
+
 module.exports =  function(client, payload) {
   const d = payload.d
 
@@ -13,4 +15,9 @@ module.exports =  function(client, payload) {
   }
   
   client.emit("ready")
+
+  d.guilds.forEach(e => {
+    const guild = new Guild(e, client)
+    client.servidores.adicionar(guild, e.id)
+  })
 }

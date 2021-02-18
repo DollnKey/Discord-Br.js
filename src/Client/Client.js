@@ -1,3 +1,4 @@
+const { throws } = require('assert');
 const { EventEmitter } = require('events');
 const Collection = require('../Utils/Collection');
 const Guild = require('../Utils/Guild');
@@ -24,6 +25,8 @@ module.exports = class Client extends EventEmitter {
 
         this.startTime = 0;
         this.servidores = new Collection(Guild);
+
+        
     }
 
     async login(token) {

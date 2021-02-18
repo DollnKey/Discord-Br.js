@@ -1,16 +1,19 @@
 import { EventEmitter } from "events";
 import Collection from "./src/Utils/Collection";
 
-type formatoImagem = "png" | "jpg" | "jpeg" | "webp" | "gif";
+interface options {
+    formatoImagem: "png" | "jpg" | "jpeg" | "webp" | "gif";
+}
 
-declare function DiscordBr(options?: DiscordBr.options): DiscordBr.Client;
+declare function DiscordBr(options?: options): DiscordBr.Client;
 
 declare namespace DiscordBr {
     interface autor {
         nome: string,
         id: string,
         hashtag: string,
-        avatar: string
+        avatar: string,
+        flags: number
     }
     
     interface Message {
@@ -40,7 +43,7 @@ declare namespace DiscordBr {
     }
 
     interface options {
-        formatoImagem: string;
+        formatoImagem: "png" | "jpg" | "jpeg" | "webp" | "gif";
     }
 
     export class Client extends EventEmitter {
@@ -51,7 +54,7 @@ declare namespace DiscordBr {
         servidores: Collection;
         on: EventListeners<this>;
 
-        login: (token: string) => void;
+        login(token: string): void;
     }
 }
 
