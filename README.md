@@ -7,7 +7,7 @@
 
 ## Sobre
 
-Um wrapper feito 100% em javascript puro e por brasileiros, utilizando somente a api do discord!
+Um wrapper feito 100% por brasileiros, utilizando somente a api do discord!
 
 <div align="center">
    <br />
