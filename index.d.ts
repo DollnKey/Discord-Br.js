@@ -48,3 +48,5 @@ declare namespace DiscordBr {
         servidores: Collection;
     }
 }
+
+export default DiscordBr
