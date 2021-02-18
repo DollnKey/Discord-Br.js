@@ -1,7 +1,9 @@
 import { EventEmitter } from "events";
 import Collection from "./src/Utils/Collection";
 
-declare namespace DiscordBr {
+declare function Client(options?: Utils.options): Utils.Client;
+
+declare namespace Utils {
 
     interface autor {
         nome: string,
@@ -46,7 +48,8 @@ declare namespace DiscordBr {
         token: string;
         options: options;
         servidores: Collection;
+        on: EventListeners<this>;
     }
 }
 
-export default DiscordBr
+export default Client
