@@ -1,7 +1,4 @@
-const Client = require("../Client/Client")
-const {ClientUser} = require("../Utils/Constants")
-
-module.exports = (client = Client, payload = {}) =>{
+export default function(client: any, payload: any){
 
    const d = payload.d
 

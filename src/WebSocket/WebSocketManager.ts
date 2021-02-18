@@ -1,22 +1,30 @@
-const WebSocket = require("ws")
-const { Client } = require("../Client/Client")
-const { Identify, Heartbeat } = require("../Utils/Constants")
+import WebSocket from "ws"
 
-module.exports = class Websocket {
-    constructor(client = Client) {
+interface Client {
+   token: string;
+}
+
+export class Websocket {
+
+    token: string;
+    url: string;
+    ws;
+    interval;
+    client: Client
+    
+    constructor(client: Client) {
         this.token;
         this.url = "wss://gateway.discord.gg/?v=8&encoding=json"
         this.ws;
         this.interval;
-        this.client = client
+        this.client = client;
     }
 
-    async connect(token = "") {
+
+    async connect(token: string){
         this.token = token;
 
-        this.ws = new WebSocket(this.url, {
-            auth: this.token,
-        })
+        this.ws = new WebSocket(this.url)
 
         this.ws.on("open", async () => {
             await this.ws.send(JSON.stringify({
@@ -45,7 +53,7 @@ module.exports = class Websocket {
                         break;
                     case 0:
                         try{
-                         const module = require(`../handlers/${event}.js`)
+                         const {default: module} = await import(`../handlers/${event}.ts`)
                          if(module){
                          module(this.client, payload)
                          }
@@ -59,7 +67,6 @@ module.exports = class Websocket {
             }
         })
     }
-
     heartbeat(ms = 1) {
         return setInterval(() => {
             this.ws.send(JSON.stringify({

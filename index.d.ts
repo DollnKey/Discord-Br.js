@@ -1,71 +1,50 @@
-import {EventEmitter} from "events"
-import { FormatoImagem } from "./src/Utils/Constants";
-import Message from "./src/Utils/Message";
+import { EventEmitter } from "events";
+import Collection from "./src/Utils/Collection";
 
-declare function dbr(options?: DBR.ClientOptions): dbr.Client;
+declare namespace DiscordBr {
 
+    interface autor {
+        nome: string,
+        id: string,
+        hashtag: string,
+        avatar: string
+    }
+    
+    interface Message {
+        tipo: string;
+        criado: number;
+        conteudo: string;
+        servidorID: string;
+        canalID: string;
+        id: string;
+        autor: autor
+    }
 
-declare namespace dbr {
-    export const Constants: Constants;
-    export const VERSAO: string;
-
-    type formatoImagem = "jpg" | "jpeg" | "png" | "gif" | "webp";
-    type MessageConteudo = string | {
-        allowedMentions?: AllowedMentions;
-        content?: string;
-        embed?: EmbedOptions;
-        flags?: number;
-        tts?: boolean;
+    interface EventListeners<T> {
+        (event: 'message', func: (msg: Message) => void): T;
+        (event: "ready", func: () => void): T;
     }
 
     interface ClientUser {
         nome: string;
-        hashtag: string,
-        verificado: boolean,
-        id: string,
-        flags: number,
-        email: string,
-        bot: boolean,
-        avatar: string
-    }
-
-    interface ClientOptions {
-        formatoImagem?: formatoImagem;
-    }
-
-    
-    export class Client extends EventEmitter {
-        options: ClientOptions;
-        token: string;
-        tempoon: number;
-        user: ClientUser;
-        login(token: string): void;
-        emit(evento: string, ...args: any[]): void;
-    }
-
-    interface EventListeners<T> {
-        (event: "ready" | "disconnect", listener: () => void): T;
-        (event: "message", listener: (message: Message) => void): T;
-    }
-
-    
-
-    export class Message<T>{
-        conteudo: MessageConteudo;
-        type: number;
-        criado: number;
-        servidorID: string;
-        canalID: string;
+        hashtag: string;
         id: string;
-        autor: {
-            nome: string;
-            id: string;
-            hashtag: string;
-            avatar: string;
-        }
+        verificado: boolean;
+        email: string;
+        bot: boolean;
+        flags: number;
+        avatar: string;
     }
 
-    
-}
+    interface options {
+        formatoImagem: "png" | "jpg" | "jpeg" | "webp" | "gif"
+    }
 
-module.exports = Client
+    export class Client extends EventEmitter{
+        eu: ClientUser;
+        tempoon: number;
+        token: string;
+        options: options;
+        servidores: Collection;
+    }
+}

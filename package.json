@@ -1,8 +1,8 @@
 {
   "name": "discord-br.js",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -12,16 +12,5 @@
   "dependencies": {
     "ws": "^7.4.3"
   },
-  "typings": "./index.d.ts",
-  "exports": {
-    ".": [
-      {
-        "require": "./index.js",
-        "import": "./esm.mjs"
-      },
-      "./index.js"
-    ],
-    "./": "./",
-    "./esm": "./esm.mjs"
-  }
+  "typings": "./index.d.ts"
 }

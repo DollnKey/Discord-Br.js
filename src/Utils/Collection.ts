@@ -1,9 +1,15 @@
-module.exports = class Collection extends Map {
-    constructor(base, limit){
+export default class Collection extends Map {
+
+    base: any;
+    limit?: any;
+
+    constructor(base: any, limit?: any){
         super()
 
         this.base = base;
-        this.limit = limit
+        if(limit){
+        this.limit = limit;
+        }
     }
 
 
@@ -11,7 +17,7 @@ module.exports = class Collection extends Map {
         if(!obj.id && obj.id !== 0) {
             throw new Error("Cade o id do objeto?");
         }
-        const item = this.pegar(obj.id);
+        const item = this.get(obj.id);
         if(!item) {
             return this.adicionar(obj, extra, replace);
         }
@@ -45,7 +51,7 @@ module.exports = class Collection extends Map {
         return obj;
     }
 
-    filtrar(filter){
+    filtrar(filter: any){
         const arr = [];
         for(const item of this.values()){
             if(filter(item)){
@@ -55,7 +61,7 @@ module.exports = class Collection extends Map {
         return arr;
     }
 
-    encontrar(filter) {
+    encontrar(filter: any) {
         for(const item of this.values()) {
             if(filter(item)) {
                 return item;
@@ -64,7 +70,7 @@ module.exports = class Collection extends Map {
         return undefined;
     }
 
-    mapear(filter) {
+    mapear(filter: any) {
         const arr = [];
         for(const item of this.values()) {
             arr.push(filter(item));
@@ -81,7 +87,7 @@ module.exports = class Collection extends Map {
         return iter.next().value
     }
 
-    remover(obj){
+    remover(obj: any){
         const item = this.get(obj.id)
         if(!item){
             return null;
