@@ -14,10 +14,13 @@ module.exports =  function(client, payload) {
     avatar: d.user.avatar
   }
   
-  client.emit("ready")
+  for (const guild of d.guilds) {
+    if(!guild.unavailable){
+    const g = new Guild(guild, client)
+    client.servidores.adicionar(g)
+    }
+  }
 
-  d.guilds.forEach(e => {
-    const guild = new Guild(e, client)
-    client.servidores.adicionar(guild, e.id)
-  })
+  client.ready = true
+  client.emit("ready")
 }

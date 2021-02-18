@@ -26,9 +26,17 @@ declare namespace DiscordBr {
         autor: autor
     }
 
+    interface Guild {
+        entrou: number;
+        quantidadeMembros: number;
+        id: string;
+        nome: string;
+    }
+
     interface EventListeners<T> {
         (event: 'message', func: (msg: Message) => void): T;
         (event: "ready", func: () => void): T;
+        (event: "guildCreate", func: (guild: Guild) => void): T;
     }
 
     interface ClientUser {
@@ -55,6 +63,8 @@ declare namespace DiscordBr {
         on: EventListeners<this>;
 
         login(token: string): void;
+
+        enviarMensagem(id: string, content: string): void;
     }
 }
 
