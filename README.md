@@ -15,3 +15,5 @@ Um wrapper feito 100% por brasileiros, utilizando somente a api do discord!
    <h3>Ainda em desenvolvimento!</h3>
    </p>
 </div>
+
+[Discord de Suporte](https://discord.gg/MNBCzxaFsY)

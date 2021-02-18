@@ -3,7 +3,7 @@ import Guild from "./src/Utils/Guild"
 import Message from "./src/Utils/Message"
 import Collection from "./src/Utils/Collection"
 
-export{
+export = {
     Client,
     Guild,
     Message,

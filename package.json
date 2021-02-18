@@ -1,6 +1,6 @@
 {
   "name": "discord-br.js",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "description": "",
   "main": "index.ts",
   "scripts": {
@@ -10,7 +10,7 @@
   "author": "Bryzzen",
   "license": "ISC",
   "dependencies": {
-    "discord-br.js": "^1.1.2",
+    "discord-br.js": "^1.1.5",
     "events": "^3.2.0",
     "ws": "^7.4.3"
   },

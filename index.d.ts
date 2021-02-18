@@ -49,7 +49,6 @@ declare namespace DiscordBr {
         options: options;
         servidores: Collection;
         on: EventListeners<this>;
-        emit: EventListeners<this>
     }
 }
 
