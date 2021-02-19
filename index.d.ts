@@ -24,7 +24,7 @@ declare namespace DiscordBr {
         canalID: string;
         id: string;
         autor: autor;
-        reply(content: string): void;
+        reply: (content: string) => void;
     }
 
     interface Guild {
