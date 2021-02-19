@@ -32,7 +32,6 @@ module.exports = class Websocket {
         this.ws.on("message", async (msg) => {
             try {
                 const payload = JSON.parse(msg.toString())
-                console.log(payload)
                 const { t: event, s, op, d } = payload
                 const { heartbeat_interval } = d;
                 switch (op) {
@@ -51,7 +50,7 @@ module.exports = class Websocket {
                         break;
                 }
             } catch (e) {
-                console.log(e)
+                
             }
         })
     }

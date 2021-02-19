@@ -15,10 +15,7 @@ module.exports =  function(client, payload) {
   }
   
   for (const guild of d.guilds) {
-    if(!guild.unavailable){
-    const g = new Guild(guild, client)
-    client.servidores.adicionar(g)
-    }
+    client._preguilds.push(guild.id)
   }
 
   client.ready = true

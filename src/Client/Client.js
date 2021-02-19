@@ -2,6 +2,7 @@ const { throws } = require('assert');
 const { EventEmitter } = require('events');
 const Collection = require('../Utils/Collection');
 const Guild = require('../Utils/Guild');
+const Message = require('../Utils/Message');
 
 module.exports = class Client extends EventEmitter {
     constructor(options) {
@@ -28,6 +29,8 @@ module.exports = class Client extends EventEmitter {
         this.startTime = 0;
         this.servidores = new Collection(Guild);
 
+        this._preguilds = []
+
         
     }
 
@@ -35,47 +38,40 @@ module.exports = class Client extends EventEmitter {
         this.online = aa;
     }
 
-    async enviarMensagem(id, content){
-          await this.FetchMessage(id, {"content": content, "tts": false, "embed": {}})
+    async enviarMensagem(id = "", content){
+        
+        if(typeof content == "string"){
+            await this.FetchMessage(id, {
+                "content": content,
+                "tts": false
+              })
+              return;
+        }
     }
 
-    async FetchMessage(id, body){
-
-        const _stackHolder = {};
-        Error.captureStackTrace(_stackHolder);
-        const userAgent = `DiscordBot (https://github.com/Discord-br, ${require("../../package.json").version})`;
+    async FetchMessage(id = "", body = {}){
+        const userAgent = `DiscordBot (https://github.com/Discord-br/Discord-Br.js, ${require("../../package.json").version})`;
         
         
         return new Promise((resolve, reject) =>{
         const headers = {
+                "Authorization": "Bot "+this.token,
                 "User-Agent": userAgent,
-                "Accept-Encoding": "gzip,deflate",
-                "X-RateLimit-Precision": "millisecond",
-                "Authorization": this.token,
                 "Content-Type": "application/json"
         };
         
-        const HTTPS = require("https")
+        const fetch = require("node-fetch")
 
-        let data;
+        let data = JSON.stringify(body)
 
-        data = JSON.stringify(body);
-
-        const req = HTTPS.request({
-             method: "POST",
-             host: "discord.com",
-             headers: headers,
-             path: "/api/v8"+"/channels/" + `${id}/messages`,
-        
+        fetch("https://discord.com"+"/api/v8"+"/channels/" + `${id}/messages`, {
+            method: "POST",
+            body: data,
+            headers: headers
+        }).then(res => res.json())
+        .then(json => {
+            return;
         })
-
-        req.on("error", e => {
-            console.log(e)
-        })
-
-        req.write(data)
-        req.end()
-
         })
     }
 

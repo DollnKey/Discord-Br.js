@@ -8,14 +8,13 @@ module.exports = class Message {
         this.canalID = data.channel_id || "";
         this.id = data.id
         if(data.author){
-            let autor = data.author;
-            this.author = {
-                nome: String(autor.username),
-                id: String(autor.id),
-                hashtag: String(autor.discriminator),
-                avatar: String(autor.avatar),
-                flags: Number(autor.public_flags)
-            }
+            let author = data.author;
+            this.autor = {}
+            this.autor.nome = author.username
+            this.autor.id = author.id
+            this.autor.hashtag = author.discriminator
+            this.autor.avatar = author.avatar
+            this.autor.flags = author.public_flags
         }
     }
 }
