@@ -54,6 +54,10 @@ declare namespace DiscordBr {
         formatoImagem: "png" | "jpg" | "jpeg" | "webp" | "gif";
     }
 
+    interface utils {
+        msToDate(ms: number): void;
+    }
+
     export class Client extends EventEmitter {
         eu: ClientUser;
         tempoon: number;
@@ -65,6 +69,8 @@ declare namespace DiscordBr {
         login(token: string): void;
 
         enviarMensagem(id: string, content: string): void;
+
+        utils: utils
     }
 }
 

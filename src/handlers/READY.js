@@ -3,14 +3,14 @@ const Guild = require("../Utils/Guild")
 module.exports =  function(client, payload) {
   const d = payload.d
 
-  client.user = {
+  client.eu = {
     nome: d.user.username,
     hashtag: d.user.discriminator,
+    id:  d.user.id,
     verificado: d.user.verified,
-    id: d.user.id,
-    flags: d.user.flags,
     email: d.user.email,
     bot: d.user.bot,
+    flags: d.user.flags,
     avatar: d.user.avatar
   }
   

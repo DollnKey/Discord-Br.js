@@ -5,20 +5,35 @@ const Guild = require('../Utils/Guild');
 const Message = require('../Utils/Message');
 
 module.exports = class Client extends EventEmitter {
-    constructor(options) {
+    constructor(options = {formatoImagem: "png"||"gif"||"jpeg"||"jpg"||"webp"}) {
         super()
         this.token;
+
+        /*
+        nome: string;
+        hashtag: string;
+        id: string;
+        verificado: boolean;
+        email: string;
+        bot: boolean;
+        flags: number;
+        avatar: string;
+        */
+
         this._user = {
             nome: "",
-            hashtag: 0,
-            verificado: false,
+            hashtag: "",
             id: "",
+            verificado: false,
             email: "",
-            bot: true,
+            bot: false,
+            flags: 0,
             avatar: ""
         }
 
-        this.options = options
+        this.options = Object.assign({
+            formatoImagem: "png"||"gif"||"jpeg"||"jpg"||"webp"
+        }, options)
 
         this.online = false;
 
@@ -31,6 +46,22 @@ module.exports = class Client extends EventEmitter {
 
         this._preguilds = []
 
+        this.utils = {
+            msToDate: async function(time) {
+                time = Math.round(time / 1000);
+                const s = time % 60,
+                    m = Math.floor((time / 60) % 60),
+                    h = Math.floor((time / 60 / 60) % 24),
+                    d = Math.floor(time / 60 / 60 / 24);
+            
+                return {
+                     dias: d,
+                     horas: h,
+                     minutos: m,
+                     segundos: s
+                }
+            }
+        }
         
     }
 
