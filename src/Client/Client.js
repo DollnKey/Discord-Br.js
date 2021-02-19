@@ -104,7 +104,7 @@ module.exports = class Client extends EventEmitter {
             headers: headers
         }).then(res => res.json())
         .then(json => {
-            return;
+            return new Message(json, client)
         })
         })
     }

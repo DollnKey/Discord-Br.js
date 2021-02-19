@@ -7,7 +7,7 @@ client.login("TOKEN")
 client.on("message", async(message) => {
     
    if(message.conteudo === "!ping"){
-       client.enviarMensagem(message.canalID, "Pong!")
+       message.reply("Pong!")
    }
     
 })

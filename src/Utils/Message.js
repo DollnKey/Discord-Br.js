@@ -18,7 +18,7 @@ module.exports = class Message {
         }
     }
 
-    async reply(body = ""){
+    async reply(content = ""){
         const userAgent = `DiscordBot (https://github.com/Discord-br/Discord-Br.js, ${require("../../package.json").version})`;
         
         
@@ -31,7 +31,7 @@ module.exports = class Message {
         
         const fetch = require("node-fetch")
 
-        let data = JSON.stringify({content: body, tts: false, message_reference: {message_id: this.id, guild_id: this.servidorID}})
+        let data = JSON.stringify({content: content, tts: false, message_reference: {message_id: this.id, guild_id: this.servidorID}})
 
         fetch("https://discord.com"+"/api/v8"+"/channels/" + `${this.canalID}/messages`, {
             method: "POST",
@@ -39,7 +39,7 @@ module.exports = class Message {
             headers: headers
         }).then(res => res.json())
         .then(json => {
-            return;
+            return new Message(json, client)
         })
         })
     }

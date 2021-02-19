@@ -27,7 +27,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/discordjs/discord.js.git"
+    "url": "git+https://github.com/Discord-br/Discord-Br.js.git"
   },
   "keywords": [
     "api",
