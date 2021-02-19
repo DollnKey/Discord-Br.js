@@ -3,7 +3,7 @@ module.exports = class User{
         this.nome = dados.username
         this.id = dados.id
         this.hashtag = dados.discriminator
-        this.bot = dados.bot
+        this.bot = dados.bot || false
         this.avatar = dados.avatar
         this._client = client
     }

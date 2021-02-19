@@ -15,12 +15,22 @@ module.exports = class Message {
             this.autor.hashtag = author.discriminator
             this.autor.avatar = author.avatar
             this.autor.flags = author.public_flags
+            this.autor.criadoEm = new Date(Math.floor(this.autor.id / 4194304) + 1420070400000)
+        }
+
+        if(data.member){
+            let membro = data.member;
+            this.member = {}
+            this.member.nickname = membro.nick
+            this.member.entrouEm = membro.joined_at
+            this.member.cargos = membro.roles
         }
     }
 
     async reply(content = ""){
         const userAgent = `DiscordBot (https://github.com/Discord-br/Discord-Br.js, ${require("../../package.json").version})`;
         
+        let res = ""
         
         return new Promise((resolve, reject) =>{
         const headers = {
@@ -39,8 +49,9 @@ module.exports = class Message {
             headers: headers
         }).then(res => res.json())
         .then(json => {
-            return new Message(json, client)
+            res = new Message(json, this._client)
         })
+        return res;
         })
     }
 }

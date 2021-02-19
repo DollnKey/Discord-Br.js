@@ -22,6 +22,7 @@ module.exports = class Websocket {
                     intents: 513,
                     properties: {
                         $os: process.platform.toString(),
+                        intents: 16384,
                         $browser: "discord-br.js",
                         $device: "discord-br.js"
                     },
@@ -46,12 +47,10 @@ module.exports = class Websocket {
                                 module(this.client, payload)
                             }
                         } catch (e) {
-                            
                         }
                         break;
                 }
             } catch (e) {
-                
             }
         })
     }

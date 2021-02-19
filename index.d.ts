@@ -15,6 +15,12 @@ declare namespace DiscordBr {
         avatar: string,
         flags: number
     }
+
+    interface member {
+        cargos: string[];
+        nicknam: string;
+        entrouEm: number;
+    }
     
     interface Message {
         tipo: string;
@@ -25,6 +31,7 @@ declare namespace DiscordBr {
         id: string;
         autor: autor;
         reply: (content: string) => void;
+        member: member
     }
 
     interface Guild {

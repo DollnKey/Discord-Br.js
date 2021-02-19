@@ -1,3 +1,7 @@
+/**
+ * 
+ */
+
 module.exports = {
     Client: require('./src/Client/Client'),
     Guild: require('./src/Utils/Guild'),

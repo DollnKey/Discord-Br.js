@@ -17,6 +17,7 @@ module.exports =  function(client, payload) {
   }
 
   d.members.forEach(e => {
+  if(e.user.id === client.eu.id) return;
   client.usuarios.adicionar(new User(client, e.user))
   })
 }

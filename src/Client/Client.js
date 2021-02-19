@@ -5,6 +5,11 @@ const Guild = require('../Utils/Guild');
 const Message = require('../Utils/Message');
 const User = require('../Utils/User');
 
+/**
+ * @constructor
+ * @param {object} options - configurações do client
+ */
+
 module.exports = class Client extends EventEmitter {
     constructor(options = {formatoImagem: "png"||"gif"||"jpeg"||"jpg"||"webp"}) {
         super()
@@ -79,13 +84,12 @@ module.exports = class Client extends EventEmitter {
                 "content": content,
                 "tts": false
               })
-              return;
         }
     }
 
     async FetchMessage(id = "", body = {}){
         const userAgent = `DiscordBot (https://github.com/Discord-br/Discord-Br.js, ${require("../../package.json").version})`;
-        
+        let res = ""
         
         return new Promise((resolve, reject) =>{
         const headers = {
@@ -104,8 +108,9 @@ module.exports = class Client extends EventEmitter {
             headers: headers
         }).then(res => res.json())
         .then(json => {
-            return new Message(json, client)
+            res = new Message(json, this)
         })
+        return res;
         })
     }
 
