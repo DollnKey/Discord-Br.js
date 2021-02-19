@@ -23,7 +23,8 @@ declare namespace DiscordBr {
         servidorID: string;
         canalID: string;
         id: string;
-        autor: autor
+        autor: autor;
+        reply(content: string): void;
     }
 
     interface Guild {
