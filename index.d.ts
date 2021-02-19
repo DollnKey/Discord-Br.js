@@ -65,6 +65,7 @@ declare namespace DiscordBr {
         options: options;
         servidores: Collection;
         on: EventListeners<this>;
+        usuarios: Collection;
 
         login(token: string): void;
 

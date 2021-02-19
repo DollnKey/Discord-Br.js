@@ -3,6 +3,7 @@ const { EventEmitter } = require('events');
 const Collection = require('../Utils/Collection');
 const Guild = require('../Utils/Guild');
 const Message = require('../Utils/Message');
+const User = require('../Utils/User');
 
 module.exports = class Client extends EventEmitter {
     constructor(options = {formatoImagem: "png"||"gif"||"jpeg"||"jpg"||"webp"}) {
@@ -30,6 +31,8 @@ module.exports = class Client extends EventEmitter {
             flags: 0,
             avatar: ""
         }
+
+        this.usuarios = new Collection(User)
 
         this.options = Object.assign({
             formatoImagem: "png"||"gif"||"jpeg"||"jpg"||"webp"
