@@ -19,7 +19,7 @@ module.exports = class Websocket {
                 op: 2,
                 d: {
                     token: this.token,
-                    intents: 513,
+                    intents: 32767,
                     properties: {
                         $os: process.platform.toString(),
                         intents: 16384,
