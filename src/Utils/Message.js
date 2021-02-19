@@ -24,16 +24,16 @@ module.exports = class Message {
         
         return new Promise((resolve, reject) =>{
         const headers = {
-                "Authorization": "Bot "+this.token,
+                "Authorization": "Bot "+this._client.token,
                 "User-Agent": userAgent,
                 "Content-Type": "application/json"
         };
         
         const fetch = require("node-fetch")
 
-        let data = JSON.stringify({content: body, tts: false})
+        let data = JSON.stringify({content: body, tts: false, message_reference: {message_id: this.id, guild_id: this.servidorID}})
 
-        fetch("https://discord.com"+"/api/v8"+"/channels/" + `${this.canalID}/messages/${this.id}/crosspost`, {
+        fetch("https://discord.com"+"/api/v8"+"/channels/" + `${this.canalID}/messages`, {
             method: "POST",
             body: data,
             headers: headers
