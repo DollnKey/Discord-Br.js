@@ -13,13 +13,25 @@ declare namespace DiscordBr {
         id: string,
         hashtag: string,
         avatar: string,
-        flags: number
+        flags: number,
+        status: string,
+        clientstatus: object,
+        activities: object[];
     }
 
     interface member {
-        cargos: string[];
+        cargos: Role;
         nicknam: string;
         entrouEm: number;
+        permissions: string;
+    }
+
+    interface Role{
+        permissions: string;
+        nome: string;
+        mencionavel: boolean;
+        id: string;
+        cor: string;
     }
     
     interface Message {
@@ -31,7 +43,7 @@ declare namespace DiscordBr {
         id: string;
         autor: autor;
         reply: (content: string) => void;
-        member: member
+        membro: member
     }
 
     interface Guild {
@@ -39,6 +51,7 @@ declare namespace DiscordBr {
         quantidadeMembros: number;
         id: string;
         nome: string;
+        cargos: collection
     }
 
     interface EventListeners<T> {
@@ -66,14 +79,27 @@ declare namespace DiscordBr {
         msToDate(ms: number): void;
     }
 
+    interface collection{
+        atualizar(obj: object, extra?: number, replace?: number): void;
+        adicionar(obj: object, extra?: number, replace?: number): void;
+        filtrar(filter: void): void;
+        encontrar(filter: void): void;
+        mapear(filter: void): void;
+        aleatorio(): void;
+        remover(obj: object): void;
+        come(obj: object): void;
+        get(id: string): void;
+    }
+
     export class Client extends EventEmitter {
         eu: ClientUser;
         tempoon: number;
         token: string;
         options: options;
-        servidores: Collection;
+        servidores: collection;
         on: EventListeners<this>;
-        usuarios: Collection;
+        usuarios: collection;
+        cargos: collection;
 
         login(token: string): void;
 

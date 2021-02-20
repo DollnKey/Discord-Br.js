@@ -1,4 +1,5 @@
 const Guild = require("../Utils/Guild")
+const Role = require("../Utils/Role")
 const User = require("../Utils/User")
 
 module.exports =  function(client, payload) {
@@ -15,6 +16,10 @@ module.exports =  function(client, payload) {
           client.emit("guildCreate", g)
       }
   }
+
+  d.roles.forEach(r => {
+    client.cargos.adicionar(new Role(client, r))
+  })
 
   d.members.forEach(e => {
   if(e.user.id === client.eu.id) return;

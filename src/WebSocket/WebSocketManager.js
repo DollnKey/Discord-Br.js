@@ -35,7 +35,6 @@ module.exports = class Websocket {
                 const payload = JSON.parse(msg.toString())
                 const { t: event, s, op, d } = payload
                 const heartbeat_interval = d.heartbeat_interval
-                if(!heartbeat_interval){}
                 switch (op) {
                     case 10:
                         this.interval = this.heartbeat(heartbeat_interval)

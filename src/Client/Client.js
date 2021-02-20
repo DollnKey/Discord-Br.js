@@ -3,6 +3,7 @@ const { EventEmitter } = require('events');
 const Collection = require('../Utils/Collection');
 const Guild = require('../Utils/Guild');
 const Message = require('../Utils/Message');
+const Role = require('../Utils/Role');
 const User = require('../Utils/User');
 
 /**
@@ -53,6 +54,8 @@ module.exports = class Client extends EventEmitter {
         this.servidores = new Collection(Guild);
 
         this._preguilds = []
+
+        this.cargos = new Collection(Role)
 
         this.utils = {
             msToDate: async function(time) {
