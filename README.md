@@ -3,7 +3,7 @@
    <p style="font-size=20px">
    <h1>
 
-   Discord-Br.js [![NPM version](https://img.shields.io/npm/v/eris.svg?style=flat-square)](https://npmjs.com/package/discord-br.js)
+   Discord-Br.js [![NPM version](https://img.shields.io/npm/v/discord-br.js.svg?style=flat-square)](https://npmjs.com/package/discord-br.js)
    =============
    </h1>
    </p>
