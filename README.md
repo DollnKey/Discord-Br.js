@@ -48,6 +48,9 @@ const client = new Client();
    </p>
 </div>
 ##Suporte
+
 [Discord de Suporte](https://discord.gg/MNBCzxaFsY)
+
 ## License
+
 [MIT](https://choosealicense.com/licenses/mit/)
