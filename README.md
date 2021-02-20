@@ -47,7 +47,8 @@ const client = new Client();
    <h3>Ainda em desenvolvimento!</h3>
    </p>
 </div>
-##Suporte
+
+## Suporte
 
 [Discord de Suporte](https://discord.gg/MNBCzxaFsY)
 
