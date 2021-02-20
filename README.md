@@ -9,36 +9,37 @@
    </p>
 </div>
 
-## Sobre
+# Discord BR
 
-Um wrapper feito 100% por brasileiros, utilizando somente a api do discord!
+Discord-BR é uma biblioteca criada para facilitar a conecção com a API do discord por meio do uso do Node.js
 
-Instalação:
------------
+## Instalação
 
+Use seu gerenciador de pacotes para instalar a biblioteca 
+
+```bash
+yarn add discord-br.js 
 ```
- npm install --save discord-br.js
+Ou
+
+```bash
+npm install discord-br.js 
 ```
 
-Exemplo:
---------
+## Exemplo
 
-```js
-const dbr = require("discord-br.js")
+```javascript
+const { Client } = require("discord-br.js");
+const client = new Client();
 
-const client = new dbr.Client()
+      client.login("TOKEN")
 
-client.login("TOKEN")
-
-client.on("message", async(message) => {
-    
-   if(message.conteudo === "!ping"){
-       message.reply("Pong!")
-   }
-    
+      client.on("message", async(message) => {
+      if(message.conteudo === "!ping"){
+      message.reply("Pong!")
+    }
 })
 ```
-
 
 <div align="center">
    <br />
@@ -46,5 +47,7 @@ client.on("message", async(message) => {
    <h3>Ainda em desenvolvimento!</h3>
    </p>
 </div>
-
+##Suporte
 [Discord de Suporte](https://discord.gg/MNBCzxaFsY)
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
