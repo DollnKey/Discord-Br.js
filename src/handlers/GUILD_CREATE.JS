@@ -21,8 +21,17 @@ module.exports =  function(client, payload) {
     client.cargos.adicionar(new Role(client, r))
   })
 
+
   d.members.forEach(e => {
   if(e.user.id === client.eu.id) return;
   client.usuarios.adicionar(new User(client, e.user))
+  })
+
+  d.presences.forEach(e => {
+    let user = client.usuarios.get(e.user.id)
+    if(!user)return;
+    user.clientstatus = e.client_status
+    user.status = e.status
+    user.activities = e.activities
   })
 }

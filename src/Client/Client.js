@@ -5,6 +5,7 @@ const Guild = require('../Utils/Guild');
 const Message = require('../Utils/Message');
 const Role = require('../Utils/Role');
 const User = require('../Utils/User');
+const Websocket = require('../WebSocket/WebSocketManager');
 
 /**
  * @constructor
@@ -37,6 +38,8 @@ module.exports = class Client extends EventEmitter {
             flags: 0,
             avatar: ""
         }
+
+        this._ping = 0;
 
         this.usuarios = new Collection(User)
 
@@ -78,6 +81,14 @@ module.exports = class Client extends EventEmitter {
 
     set ready(aa){
         this.online = aa;
+    }
+    
+    get ping(){
+        return this._ping
+    }
+
+    set ping(ping){
+        this._ping = ping
     }
 
     async enviarMensagem(id = "", content){
@@ -127,7 +138,8 @@ module.exports = class Client extends EventEmitter {
         this.token = token = token.replace(/^(Bot|Bearer)\s*/i, '');
         const WebSocket = require("../WebSocket/WebSocketManager");
         this.startTime = Date.now();
-        const ws = new WebSocket(this).connect(this.token);
+        const ws = new WebSocket(this)
+        ws.connect(this.token)
     }
 
 

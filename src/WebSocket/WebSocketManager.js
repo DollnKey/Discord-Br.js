@@ -7,6 +7,8 @@ module.exports = class Websocket {
         this.ws;
         this.interval;
         this.client = client;
+        this.ping = 0;
+        this.lastheat = 0
     }
 
     async connect(token) {
@@ -22,7 +24,6 @@ module.exports = class Websocket {
                     intents: 32767,
                     properties: {
                         $os: process.platform.toString(),
-                        intents: 16384,
                         $browser: "discord-br.js",
                         $device: "discord-br.js"
                     },
@@ -34,7 +35,8 @@ module.exports = class Websocket {
             try {
                 const payload = JSON.parse(msg.toString())
                 const { t: event, s, op, d } = payload
-                const heartbeat_interval = d.heartbeat_interval
+                console.log(payload)
+                const {heartbeat_interval} = d
                 switch (op) {
                     case 10:
                         this.interval = this.heartbeat(heartbeat_interval)
@@ -48,6 +50,11 @@ module.exports = class Websocket {
                         } catch (e) {
                         }
                         break;
+                    case 11:
+                      this.ping = this.lastheat - heartbeat_interval
+                      this.lastheat = Date.now()
+                      this.client.ping = ping
+                      break;
                 }
             } catch (e) {
             }
@@ -68,7 +75,7 @@ module.exports = class Websocket {
             op: 2,
             d: {
                 token: this.token,
-                intents: 513,
+                intents: 32767,
                 properties: {
                     $os: process.platform.toString(),
                     $browser: "discord-br.js",

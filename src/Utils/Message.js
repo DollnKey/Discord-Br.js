@@ -1,4 +1,5 @@
 const { throws } = require("assert");
+const User = require("../Utils/User")
 
 module.exports = class Message {
     constructor(data, client){
@@ -11,20 +12,7 @@ module.exports = class Message {
         this.id = data.id
         this.servidor = client.servidores.get(this.servidorID)
         if(data.author){
-            let author = data.author;
-            this.autor = {}
-            this.autor.nome = author.username
-            this.autor.id = author.id
-            this.autor.hashtag = author.discriminator
-            this.autor.avatar = author.avatar
-            this.autor.flags = author.public_flags
-            this.autor.criadoEm = new Date(Math.floor(this.autor.id / 4194304) + 1420070400000)
-            let user = client.usuarios.get(this.id)
-            if(user){
-            this.autor.status = user.status ? user.status : user._status
-            this.autor.activites = user.activites ? user.activites : user._activites
-            this.autor.clientstatus = user.clientstatus ? user.clientstatus : user._clientstatus
-            }
+            this.autor = this._client.usuarios.get(data.author.id)
         }
 
         if(data.member){
