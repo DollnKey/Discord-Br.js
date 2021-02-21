@@ -11,7 +11,7 @@
 
 # Discord BR
 
-Discord-BR é uma biblioteca criada para facilitar a conecção com a API do discord por meio do uso do Node.js
+Discord-BR é uma biblioteca criada para facilitar a conexão com a API do discord por meio do uso do Node.js
 
 ## Instalação
 
