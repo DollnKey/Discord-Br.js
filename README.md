@@ -1,7 +1,7 @@
 <div align="center">
    <br />
    <p>
-   <img src="https://media.discordapp.net/attachments/810855209193701489/813373886853808179/logo_v2.png?width=1025&height=486" alt="Discord-Br.js" width="1025">
+   <img src="https://media.discordapp.net/attachments/810855209193701489/813374327319035944/logo_clea.png?width=1025&height=486" alt="Discord-Br.js" width="1025">
    </p>
    <br />
    <p style="font-size=20px">
