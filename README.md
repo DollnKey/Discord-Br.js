@@ -11,7 +11,7 @@
    </p>
 </div>
 
-# Discord BR
+## Sobre
 
 Discord-BR é uma biblioteca criada para facilitar a conexão com a API do discord por meio do uso do Node.js
 
