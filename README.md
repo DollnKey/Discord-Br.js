@@ -1,7 +1,7 @@
 <div align="center">
    <br />
    <p>
-   <a href="https://npmjs.com/discord-br.js" ><img src="https://media.discordapp.net/attachments/810855209193701489/813374327319035944/logo_clea.png?width=1025&height=486" alt="Discord-Br.js" width="1025">
+   <a href="https://npmjs.com/discord-br.js" ><img src="https://media.discordapp.net/attachments/810855209193701489/813374327319035944/logo_clea.png?width=1025&height=486" alt="Discord-Br.js" width="546">
    </a>
    </p>
    <br />
