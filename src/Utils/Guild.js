@@ -16,6 +16,7 @@ module.exports = class Guild {
         this.entrouEm = Date.parse(data.joined_at)
         this.quantidadeMembros = Number(data.member_count);
         this.id = String(data.id)
+        this.criadoEm = new Date(Math.floor(this.id / 4194304) + 1420070400000)
         this.nome = String(data.name)
         this.cargos = new Collection(Role)
         data.roles.map(e => {

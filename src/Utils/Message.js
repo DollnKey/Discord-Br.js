@@ -5,7 +5,7 @@ module.exports = class Message {
     constructor(data, client) {
         this._client = client;
         this.tipo = data.type || 0
-        this.criado = Date.parse(data.timestamp)
+        this.criadoEm = Date.parse(data.timestamp)
         this.conteudo = data.content || "";
         this.servidorID = data.guild_id || "";
         this.canalID = data.channel_id || "";
@@ -20,7 +20,7 @@ module.exports = class Message {
         }
     }
 
-    async reply(content = "") {
+    async responder(content = "") {
         const userAgent = `DiscordBot (https://github.com/Discord-br/Discord-Br.js, ${require("../../package.json").version})`;
 
         let res = ""

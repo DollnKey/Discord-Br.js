@@ -8,5 +8,6 @@ module.exports = class Channel{
         this.ultimamensagem = data.last_message_id
         this.position = data.position
         this.category = this.parent_id
+        this.criadoEm = new Date(Math.floor(this.id / 4194304) + 1420070400000)
     }
 }

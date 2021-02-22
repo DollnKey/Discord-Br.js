@@ -19,5 +19,5 @@ module.exports =  function(client, payload) {
   }
 
   client.ready = true
-  client.emit("ready")
+  client.emit("online")
 }

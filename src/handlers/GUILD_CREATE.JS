@@ -14,7 +14,7 @@ module.exports =  function(client, payload) {
     const g = new Guild(d, client)
     client.servidores.adicionar(d)
       if(client.online){
-          client.emit("guildCreate", g)
+          client.emit("servidorCriado", g)
       }
   }
 

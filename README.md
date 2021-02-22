@@ -36,7 +36,7 @@ const client = new Client();
 
    client.login("TOKEN")
 
-   client.on("message", async(message) => {
+   client.on("mensagem", async(message) => {
       if(message.conteudo === "!ping"){
          message.reply("Pong!")
    }

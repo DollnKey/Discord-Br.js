@@ -42,7 +42,7 @@ declare namespace DiscordBr {
         canalID: string;
         id: string;
         autor: autor;
-        reply: (content: string) => void;
+        responder: (content: string) => void;
         membro: member
     }
 
@@ -55,9 +55,10 @@ declare namespace DiscordBr {
     }
 
     interface EventListeners<T> {
-        (event: 'message', func: (msg: Message) => void): T;
-        (event: "ready", func: () => void): T;
-        (event: "guildCreate", func: (guild: Guild) => void): T;
+        (event: 'mensagem', func: (msg: Message) => void): T;
+        (event: "online", func: () => void): T;
+        (event: "servidorCriado", func: (guild: Guild) => void): T;
+        (event: 'mensagemEditada', func: (msg: Message) => void): T;
     }
 
     interface ClientUser {
