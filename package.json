@@ -1,6 +1,6 @@
 {
   "name": "discord-br.js",
-  "version": "1.3.6",
+  "version": "1.3.7",
   "description": "Um Wrapper que facilita o contato com a API do discord!",
   "main": "./index.js",
   "scripts": {
