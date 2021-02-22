@@ -58,7 +58,7 @@ module.exports = class Websocket {
                       break;
                 }
             } catch (e) {
-                console.log(e)
+                //console.log(e)
             }
         })
     }
