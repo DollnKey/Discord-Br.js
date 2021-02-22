@@ -136,7 +136,7 @@ module.exports = class Client extends EventEmitter {
         return this.online
     }
 
-    async login(token) {
+    async logar(token) {
         if (!token || typeof token !== "string") throw new Error("Token Inválido!");
         this.token = token = token.replace(/^(Bot|Bearer)\s*/i, '');
         const WebSocket = require("../WebSocket/WebSocketManager");

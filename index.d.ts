@@ -102,7 +102,7 @@ declare namespace DiscordBr {
         usuarios: collection;
         cargos: collection;
 
-        login(token: string): void;
+        logar(token: string): void;
 
         enviarMensagem(id: string, content: string): void;
 

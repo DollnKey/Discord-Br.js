@@ -34,11 +34,11 @@ npm install discord-br.js
 const { Client } = require("discord-br.js");
 const client = new Client();
 
-   client.login("TOKEN")
+   client.logar("TOKEN")
 
    client.on("mensagem", async(message) => {
       if(message.conteudo === "!ping"){
-         message.reply("Pong!")
+         message.responder("Pong!")
    }
 })
 ```
