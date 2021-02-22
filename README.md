@@ -56,4 +56,4 @@ const client = new Client();
 
 ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://github.com/Discord-br/Discord-Br.js/blob/master/LICENSE)
