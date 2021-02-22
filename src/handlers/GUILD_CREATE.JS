@@ -1,3 +1,4 @@
+const Emoji = require("../Utils/Emoji")
 const Guild = require("../Utils/Guild")
 const Role = require("../Utils/Role")
 const User = require("../Utils/User")
@@ -25,6 +26,10 @@ module.exports =  function(client, payload) {
   d.members.forEach(e => {
   if(e.user.id === client.eu.id) return;
   client.usuarios.adicionar(new User(client, e.user))
+  })
+
+  d.emojis.forEach(e => {
+    client.emojis.adicionar(new Emoji(client, e))
   })
 
   d.presences.forEach(e => {

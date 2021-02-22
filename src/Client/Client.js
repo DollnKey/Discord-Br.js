@@ -1,6 +1,7 @@
 const { throws } = require('assert');
 const { EventEmitter } = require('events');
 const Collection = require('../Utils/Collection');
+const Emoji = require('../Utils/Emoji');
 const Guild = require('../Utils/Guild');
 const Message = require('../Utils/Message');
 const Role = require('../Utils/Role');
@@ -38,6 +39,8 @@ module.exports = class Client extends EventEmitter {
             flags: 0,
             avatar: ""
         }
+
+        this.emojis = new Collection(Emoji)
 
         this._ping = 0;
 

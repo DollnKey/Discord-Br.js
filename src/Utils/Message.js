@@ -1,10 +1,9 @@
 const { throws } = require("assert");
 const User = require("../Utils/User");
-const Member = require("./Member");
 
 module.exports = class Message {
     constructor(data, client) {
-        const _client = client;
+        this._client = client;
         this.tipo = data.type || 0
         this.criado = Date.parse(data.timestamp)
         this.conteudo = data.content || "";
@@ -13,12 +12,11 @@ module.exports = class Message {
         this.id = data.id
         this.servidor = client.servidores.get(this.servidorID)
         if (data.author) {
-            this.autor = _client.usuarios.get(data.author.id)
+            this.autor = this._client.usuarios.get(data.author.id)
         }
 
         if (data.member) {
-            let member = data.member;
-            this.member = new Member(_client, member)
+            this.membro = this.servidor.membros.get(data.author.id)
         }
     }
 
@@ -29,7 +27,7 @@ module.exports = class Message {
 
         return new Promise((resolve, reject) => {
             const headers = {
-                "Authorization": "Bot " + _client.token,
+                "Authorization": "Bot " + this._client.token,
                 "User-Agent": userAgent,
                 "Content-Type": "application/json"
             };
@@ -44,7 +42,7 @@ module.exports = class Message {
                 headers: headers
             }).then(res => res.json())
                 .then(json => {
-                    res = new Message(json, _client)
+                    res = new Message(json, this._client)
                 })
             return res;
         })

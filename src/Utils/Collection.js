@@ -54,6 +54,10 @@ module.exports = class Collection extends Map {
         return arr;
     }
 
+    primeiro(){
+        return this.values().next().value
+    }
+
     encontrar(filter) {
         for(const item of this.values()) {
             if(filter(item)) {

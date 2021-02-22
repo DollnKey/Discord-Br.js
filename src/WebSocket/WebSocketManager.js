@@ -35,8 +35,9 @@ module.exports = class Websocket {
             try {
                 const payload = JSON.parse(msg.toString())
                 const { t: event, s, op, d } = payload
-                console.log(payload)
-                const {heartbeat_interval} = d
+                //console.log(payload)
+                let heartbeat_interval;
+                if(d !== null) heartbeat_interval = d.heartbeat_interval
                 switch (op) {
                     case 10:
                         this.interval = this.heartbeat(heartbeat_interval)
@@ -48,15 +49,16 @@ module.exports = class Websocket {
                                 module(this.client, payload)
                             }
                         } catch (e) {
+                            //console.log(e)
                         }
                         break;
                     case 11:
-                      this.ping = this.lastheat - heartbeat_interval
-                      this.lastheat = Date.now()
-                      this.client.ping = ping
+                      this.ping = this.lastheat - Date.now()
+                      this.client.ping = this.ping
                       break;
                 }
             } catch (e) {
+                console.log(e)
             }
         })
     }
@@ -67,6 +69,7 @@ module.exports = class Websocket {
                 op: 1,
                 d: null
             }))
+            this.lastheat = Date.now()
         }, ms)
     }
 
