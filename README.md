@@ -1,5 +1,9 @@
 <div align="center">
    <br />
+   <p>
+   <img src="https://media.discordapp.net/attachments/810855209193701489/813364137513320508/dbr_512.png?width=498&height=498" alt="Discord-Br.js" width="512">
+   </p>
+   <br />
    <p style="font-size=20px">
    <h1>
 
@@ -11,7 +15,7 @@
 
 # Discord BR
 
-Discord-BR é uma biblioteca criada para facilitar a conecção com a API do discord por meio do uso do Node.js
+Discord-BR é uma biblioteca criada para facilitar a conexão com a API do discord por meio do uso do Node.js
 
 ## Instalação
 
@@ -32,12 +36,12 @@ npm install discord-br.js
 const { Client } = require("discord-br.js");
 const client = new Client();
 
-      client.login("TOKEN")
+   client.login("TOKEN")
 
-      client.on("message", async(message) => {
+   client.on("message", async(message) => {
       if(message.conteudo === "!ping"){
-      message.reply("Pong!")
-    }
+         message.reply("Pong!")
+   }
 })
 ```
 
