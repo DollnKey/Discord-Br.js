@@ -2,7 +2,7 @@ const dbr = require("discord-br.js")
 
 const client = new dbr.Client()
 
-client.logarn("TOKEN")
+client.logar("TOKEN")
 
 client.on("mensagem", async(message) => {
     
