@@ -6,7 +6,6 @@ interface options {
 }
 
 declare function DiscordBr(options?: options): DiscordBr.Client;
-
 declare namespace DiscordBr {
     interface autor {
         nome: string,
@@ -90,6 +89,17 @@ declare namespace DiscordBr {
         remover(obj: object): void;
         come(obj: object): void;
         get(id: string): void;
+    }
+
+    interface Embed{
+        setarTitulo: string;
+        setarDescrição: string;
+        setarCor: string;
+        setarAutor: string;
+        setarImagem: string;
+        setarMiniImg: string;
+        setarRodape: string;
+        setarURL: string;
     }
 
     export class Client extends EventEmitter {

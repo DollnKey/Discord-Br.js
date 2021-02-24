@@ -34,8 +34,16 @@ module.exports = class Message {
 
             const fetch = require("node-fetch")
 
-            let data = JSON.stringify({ content: content, tts: false, message_reference: { message_id: this.id, guild_id: this.servidorID } })
+            let data;
 
+            if(typeof content === "string"){
+
+            data = JSON.stringify({ content: content, tts: false, message_reference: { message_id: this.id, guild_id: this.servidorID } })
+
+            }else if(typeof content === "object"){
+                data = JSON.stringify({embed: content, tts: false, message_reference: { message_id: this.id, guild_id: this.servidorID } })
+  
+            }
             fetch("https://discord.com" + "/api/v8" + "/channels/" + `${this.canalID}/messages`, {
                 method: "POST",
                 body: data,
